@@ -2,15 +2,30 @@
 
 
 def show_balance():
-    pass
+    print(f'Your balance is ${balance:.2f}')
 
 
 def deposit():
-    pass
+    amount = float(input('Enter the amout to be deposited: '))
+
+    if amount < 0:
+        print('The amount should be greater than 0.00')
+        return 0
+    else:
+        return amount
 
 
 def withdraw():
-    pass
+    amount = float(input('Enter amount to be withdrawn: '))
+
+    if amount > balance:
+        print('Insufficient funds')
+        return 0
+    elif amount < 0:
+        print('Amount must be greater than 0.00')
+        return 0
+    else:
+        return amount
 
 
 balance = 0
@@ -25,4 +40,15 @@ while is_running:
 
     choice = input('Enter a number (1-4): ')
 
-    if choice
+    if choice == '1':
+        show_balance()
+    if choice == '2':
+        balance += deposit()
+    if choice == '3':
+        balance -= withdraw()
+    if choice == '4':
+        is_running = False
+    else:
+        print('Choose a number between 1 and 4.')
+
+print('Exiting the program.')
